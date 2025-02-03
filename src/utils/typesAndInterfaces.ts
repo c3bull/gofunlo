@@ -31,7 +31,7 @@ export interface ProductInterface {
 export interface LocationInterface {
     city: string,
     province: string,
-    driving_directions: string | null
+    driving_directions?: string | null
 }
 
 export interface CompanyInterface {
@@ -39,9 +39,9 @@ export interface CompanyInterface {
     id: string,
     logo_image_url?: null,
     fc_website_url: string,
-    phone: string,
-    country: string,
-    fee: number,
+    phone?: string,
+    country?: string,
+    fee?: number,
 }
 
 export interface MediaInterface {
@@ -79,8 +79,10 @@ export interface BookingInterface {
     participants: ParticipantsInterface[],
     total_price: number,
     payable_price: number | null,
+    currency: string,
     trip_data: TripDataInterface,
     product_data: ProductDataInterface,
+    destination_description?: string,
 }
 
 export interface ParticipantsInterface {
@@ -94,6 +96,9 @@ export interface ParticipantsInterface {
     last_name: string,
     birth_date: string,
     house_number: string,
+    street_number: string,
+    phone?: string,
+    email?: string,
 }
 
 export interface TripDataInterface {
@@ -104,6 +109,7 @@ export interface TripDataInterface {
     max_age: number,
     bookings: BookingsInterface[],
     end_date: string,
+    start_date: string,
 }
 
 export interface BookingsInterface {
@@ -119,6 +125,7 @@ export interface BookingsInterface {
     first_name: string,
     last_name: string,
     participants: ParticipantsInterface[],
+    parent: ParticipantsInterface
 }
 
 export interface ProductDataInterface {
@@ -128,6 +135,16 @@ export interface ProductDataInterface {
     main_photo: PhotoInterface,
     description: string,
     country_name: string,
+    location: LocationInterface,
+    company: CompanyInterface,
+    food_type?: string,
+    food_vegan?: string,
+    food_vegetarian?: string,
+    food_description?: string,
+    insurance_description?: string,
+    additional_info_text?: string,
+    schedule_description?: string,
+    transport_type?: string,
 }
 
 export interface PhotoInterface {
