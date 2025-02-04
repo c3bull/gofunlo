@@ -26,7 +26,7 @@ export default function Trip() {
                 <div className='w-full flex flex-col sm:max-w-[500px] md:max-w-full lg:max-w-[960px] '>
                     <div
                         className="grid grid-cols-1 items-center justify-items-center pb-4 md:pb-10 gap-10 md:gap-6 lg:gap-10">
-                        {booking && <BookingDetails status_label={booking.status_label} id={booking.id} status={booking.status}
+                        {booking && <BookingDetails status_label={booking.status_label} id={booking.id}
                                                     destination_description={booking.destination_description}
                                                     participants={booking.participants?.map((
                                                         {

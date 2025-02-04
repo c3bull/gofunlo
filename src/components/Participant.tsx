@@ -12,6 +12,16 @@ export default function Participant({participant}: { participant: ParticipantsIn
                 <Image src="/assets/icons/birthday.png" alt="birthday icon" width={20} height={20}/>
                 <p>{participant.birth_date}</p>
             </div>}
+            {participant.phone && <div className='flex gap-x-2 items-center'>
+                <Image src="/assets/icons/phone.png" alt="price icon" width={20}
+                       height={20}/>
+                <p>{participant.phone}</p>
+            </div>}
+            {participant.email && <div className='flex gap-x-2 items-center'>
+                <Image src="/assets/icons/email.png" alt="price icon" width={20}
+                       height={20}/>
+                <p>{participant.email}</p>
+            </div>}
             {participant.pesel && <div className='flex gap-x-2 items-center'>
                 <Image src="/assets/icons/age.png" alt="age icon" width={20} height={20}/>
                 <p>{participant.pesel}</p>

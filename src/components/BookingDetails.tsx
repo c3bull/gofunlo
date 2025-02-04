@@ -1,7 +1,6 @@
 import {BookingInterface} from "@/utils/typesAndInterfaces";
 import Image from "next/image";
 import Participant from "@/components/Participant";
-import Parent from "@/components/Parent";
 import InfoSection from "@/components/InfoSection";
 import LocationSection from "@/components/LocationSection";
 
@@ -11,7 +10,6 @@ export default function BookingDetails({
                                            trip_data,
                                            total_price,
                                            participants,
-                                           status,
                                            product_data,
                                            currency,
                                            destination_description, status_label
@@ -111,7 +109,7 @@ export default function BookingDetails({
                                 <div className="flex flex-col gap-y-4 py-4 border-b">
                                     <h2 className="font-semibold text-lg">Uczestnicy:</h2>
                                     {trip_data.bookings?.map((booking) => (
-                                        <Parent parent={booking.parent} key={booking.parent.id}/>
+                                        <Participant participant={booking.parent} key={booking.parent.id}/>
                                     ))}
                                     {participants?.map((participant) => (
                                         <Participant participant={participant} key={participant.id}/>
@@ -119,12 +117,10 @@ export default function BookingDetails({
                                 </div>
 
                                 <div className='flex flex-col gap-4 py-4'>
-
                                     <InfoSection title="Plan wydarzenia:" content={product_data.schedule_description}/>
                                     <InfoSection title="Wyżywienie:" content={product_data.food_type}/>
                                     <InfoSection title="Ubezpieczenie:" content={product_data.insurance_description}/>
                                     <InfoSection title="Dodatkowe informacje:" content={product_data.additional_info_text}/>
-
                                     <LocationSection location={product_data.location} country_name={product_data.country_name} transport_type={product_data.transport_type} description={destination_description}/>
                                 </div>
                             </div>

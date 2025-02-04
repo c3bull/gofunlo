@@ -45,19 +45,19 @@ export default function LocationSection({location, country_name, transport_type,
                                 </div>
                                 <div>
                                     <p>
-                                                                    <span
-                                                                        className='font-semibold'>Dojazd:</span> {transport_type && transport_type.trim() ? remap[transport_type as keyof typeof remap] :
+                                       <span
+                                           className='font-semibold'>Dojazd:</span> {transport_type && transport_type.trim() ? remap[transport_type as keyof typeof remap] :
                                         <span className="text-gray-600">-</span>}
                                     </p>
                                 </div>
                                 <div>
-                                                            <span
-                                                                className='font-semibold'>Opis:</span> {description ? description :
+                                    <span
+                                        className='font-semibold'>Opis:</span> {description ? description :
                                     <p className="text-gray-600">-</p>}
                                 </div>
                                 <div>
-                                                            <span
-                                                                className='font-semibold'>Wskazówki dojazdu:</span> {location.driving_directions ? location.driving_directions :
+                                    <span
+                                        className='font-semibold'>Wskazówki dojazdu:</span> {location.driving_directions ? location.driving_directions :
                                     <p className="text-gray-600">Brak informacji –
                                         skontaktuj się z
                                         organizatorem.</p>}

@@ -98,7 +98,7 @@ export interface PlaceInterface {
 
 export interface BookingInterface {
     id: string,
-    status: string,
+    status?: string,
     participants: ParticipantsInterface[],
     total_price: number,
     payable_price: number | null,
