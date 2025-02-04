@@ -1,10 +1,5 @@
 import Image from "next/image";
-import {
-    BookingInterface,
-    BookingsInterface,
-    ParticipantsInterface,
-    TripDataInterface
-} from "@/utils/typesAndInterfaces";
+import {ParticipantsInterface} from "@/utils/typesAndInterfaces";
 
 export default function Parent({ parent }: { parent: ParticipantsInterface }) {
     return (
@@ -35,11 +30,11 @@ export default function Parent({ parent }: { parent: ParticipantsInterface }) {
                        height={20}/>
                 <p>{parent.email}</p>
             </div>}
-            <div className='flex gap-x-2 items-center'>
+            {parent.street && <div className='flex gap-x-2 items-center'>
                 <Image src="/assets/icons/house.png" alt="price icon" width={20}
                        height={20}/>
-                <p> {parent.street} {parent.street_number}/{parent.house_number}, {parent.postcode} {parent.city}, {parent.province}</p>
-            </div>
+                <p> {parent.street} {parent.street_number && parent.street_number}{parent.house_number && "/"}{parent.house_number}, {parent.postcode && parent.postcode} {parent.city && parent.city}, {parent.province && parent.province}</p>
+            </div>}
         </div>
     );
 }

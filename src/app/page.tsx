@@ -8,7 +8,7 @@ export default function Home() {
     return (
         <div className="flex flex-col w-full items-center">
             <div className='w-full flex flex-col sm:max-w-[500px] md:max-w-full lg:max-w-[960px] xl:max-w-[1096px] 2xl:max-w-[1280px]'>
-                <div className='px-4 py-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10'>
+                <div className='px-4 sm:px-0 md:px-4 lg:px-0 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-10 md:gap-4 lg:gap-10'>
                     {products.data.map((product) => (
                         <Product status={product.status} min_price={product.min_price} key={product.id} id={product.id}
                                  name={product.name} description={product.description}

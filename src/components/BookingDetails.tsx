@@ -2,6 +2,8 @@ import {BookingInterface} from "@/utils/typesAndInterfaces";
 import Image from "next/image";
 import Participant from "@/components/Participant";
 import Parent from "@/components/Parent";
+import InfoSection from "@/components/InfoSection";
+import LocationSection from "@/components/LocationSection";
 
 export default function BookingDetails({
                                            id,
@@ -12,14 +14,12 @@ export default function BookingDetails({
                                            status,
                                            product_data,
                                            currency,
-                                           destination_description
+                                           destination_description, status_label
                                        }: BookingInterface) {
 
-
-    console.log('kosola ', product_data)
     return (
         <article
-            className="w-full bg-slate-50 rounded-lg drop-shadow-md hover:drop-shadow-xl duration-300 flex overflow-hidden">
+            key={id} className="w-full bg-slate-50 rounded-lg drop-shadow-md hover:drop-shadow-xl duration-300 flex overflow-hidden">
             <div className='w-full flex flex-col'>
                 <div className='relative'>
                     {product_data.main_photo ? (
@@ -46,11 +46,9 @@ export default function BookingDetails({
                     )}
                     <div className="absolute top-2 right-2">
                         <div
-                            className={`border-2 py-1 px-4 rounded-full bg-opacity-90 
-                                ${status === "ACTIVE" ? "bg-green-100 border-green-400" : ""}
-                                ${status === "DRAFT" ? "bg-orange-100 border-orange-400" : ""}`}
-                        >
-                            <p>{trip_data.status}</p>
+                            className={`border-2 py-1 px-4 rounded-full bg-opacity-90 font-semibold
+                                ${status_label === "Zaliczka Opłacona" ? "bg-green-100 border-green-400" : "bg-orange-100 border-orange-400"}`}>
+                            <p>{status_label}</p>
                         </div>
                     </div>
                 </div>
@@ -122,92 +120,12 @@ export default function BookingDetails({
 
                                 <div className='flex flex-col gap-4 py-4'>
 
-                                    <div>
-                                        <h3 className="font-semibold">Plan wydarzenia:</h3>
-                                        {product_data.schedule_description ? (
-                                            <p>{product_data.schedule_description}</p>
-                                        ) : (
-                                            <p className="text-gray-600">Brak informacji – skontaktuj się z
-                                                organizatorem.</p>
-                                        )}
-                                    </div>
+                                    <InfoSection title="Plan wydarzenia:" content={product_data.schedule_description}/>
+                                    <InfoSection title="Wyżywienie:" content={product_data.food_type}/>
+                                    <InfoSection title="Ubezpieczenie:" content={product_data.insurance_description}/>
+                                    <InfoSection title="Dodatkowe informacje:" content={product_data.additional_info_text}/>
 
-                                    <div>
-                                        <h3 className="font-semibold">Wyżywienie:</h3>
-                                        {product_data.food_type ? (
-                                            <p>{product_data.food_type}</p>
-                                        ) : (
-                                            <p className="text-gray-600">Brak informacji – skontaktuj się z
-                                                organizatorem.</p>
-                                        )}
-                                    </div>
-
-                                    <div>
-                                        <h3 className="font-semibold">Ubezpieczenie:</h3>
-                                        {product_data.insurance_description ? (
-                                            <p>{product_data.insurance_description}</p>
-                                        ) : (
-                                            <p className="text-gray-600">Brak informacji – skontaktuj się z
-                                                organizatorem.</p>
-                                        )}
-                                    </div>
-
-                                    <div>
-                                        <h3 className="font-semibold">Dodatkowe informacje:</h3>
-                                        {product_data.additional_info_text ? (
-                                            <p>{product_data.additional_info_text}</p>
-                                        ) : (
-                                            <p className="text-gray-600">Brak informacji – skontaktuj się z
-                                                organizatorem.</p>
-                                        )}
-                                    </div>
-                                    <div>
-                                        <h3 className="font-semibold">Lokalizacja:</h3>
-                                        <div className='flex flex-col md:flex-row gap-4'>
-                                            <div className='flex-1'>
-                                                <Image
-                                                    src="/assets/icons/noimage.jpg"
-                                                    alt="image"
-                                                    width={500}
-                                                    height={500}
-                                                    className='rounded-lg w-full h-full object-cover aspect-square min-w-[200px] min-h-[200px]'
-                                                />
-                                            </div>
-                                            <div className='flex-[3]'>
-                                                <div>
-                                                    {product_data.location ? (
-                                                        <div className='py-2 flex flex-col gap-2'>
-                                                            <div className="flex gap-2">
-                                                                <Image src="/assets/icons/location-pin.png"
-                                                                       alt="Lokalizacja"
-                                                                       width={22} height={22}
-                                                                       className="object-contain self-start w-[18px] h-auto"/>
-                                                                <p>{product_data.location.city}, {product_data.location.province}, {product_data.country_name}</p>
-                                                            </div>
-                                                            <div>
-                                                                <p><span
-                                                                    className='font-semibold'>Dojazd:</span> {product_data.transport_type ? product_data.transport_type :
-                                                                    <p className="text-gray-600">Brak informacji –
-                                                                        skontaktuj się z
-                                                                        organizatorem.</p>}
-                                                                </p>
-                                                            </div>
-                                                            <div>
-                                                            <span
-                                                                className='font-semibold'>Opis:</span> {destination_description ? destination_description :
-                                                                <p className="text-gray-600">Brak informacji –
-                                                                    skontaktuj się z
-                                                                    organizatorem.</p>}
-                                                            </div>
-                                                        </div>
-                                                    ) : (
-                                                        <p className="text-gray-600">Brak informacji – skontaktuj się z
-                                                            organizatorem.</p>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <LocationSection location={product_data.location} country_name={product_data.country_name} transport_type={product_data.transport_type} description={destination_description}/>
                                 </div>
                             </div>
                         </div>

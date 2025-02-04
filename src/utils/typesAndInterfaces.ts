@@ -5,21 +5,21 @@ export interface ProductInterface {
     type: string,
     company_id?: string,
     location: LocationInterface,
-    food_description: string | null,
+    food_description?: string | null,
     media: MediaInterface[],
     country_code?: string,
     country_name: string,
     min_age: number,
     max_age: number,
     places?: PlaceInterface[],
-    food_diets: string[] | null,
+    food_diets?: string[] | null,
     currency: string,
     company: CompanyInterface,
     dedicated_trip_caregiver_user: DedicatedTripCaregiveUserInterface,
     product_id?: string,
     status: string,
-    max_price: number | null,
-    min_price: number | null,
+    max_price?: number | null,
+    min_price?: number | null,
     min_trip_start_date?: string | null,
     min_trip_end_date?: string | null,
     max_trip_start_date?: string | null,
@@ -36,7 +36,7 @@ export interface ProductInterface {
     schedule_description?: string,
     insurance_type?: string,
     insurance_description?: string,
-    accommodation?: AccommodationInterface
+    accommodation?: Partial<AccommodationInterface>
 }
 
 export interface AccommodationInterface {
@@ -106,6 +106,7 @@ export interface BookingInterface {
     trip_data: TripDataInterface,
     product_data: ProductDataInterface,
     destination_description?: string,
+    status_label?: string | null,
 }
 
 export interface ParticipantsInterface {
@@ -175,4 +176,12 @@ export interface PhotoInterface {
     url: string,
     width: number,
     height: number,
+}
+
+export interface InfoSectionInterface {
+    title: string,
+    content: string | undefined | null,
+    additionalContent?: string | null | undefined,
+    flag?: string,
+    foodDiets?: string[] | null,
 }

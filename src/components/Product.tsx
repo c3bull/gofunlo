@@ -1,3 +1,5 @@
+"use client"
+
 import {ProductInterface} from "@/utils/typesAndInterfaces";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,31 +9,20 @@ export default function Product({
                                     name,
                                     description,
                                     type,
-                                    company_id,
                                     location,
                                     company,
-                                    product_id,
                                     max_trip_end_date,
-                                    max_price,
-                                    max_trip_start_date,
                                     min_trip_start_date,
-                                    min_trip_end_date,
                                     country_name,
                                     dedicated_trip_caregiver_user,
-                                    food_description,
-                                    food_diets,
                                     max_age,
                                     min_age,
-                                    country_code,
                                     media,
-                                    places,
                                     currency,
                                     min_price,
                                     status
                                 }: ProductInterface) {
 
-
-    // console.log(places)
     return (
         <Link href={id} legacyBehavior>
             <article
@@ -103,14 +94,12 @@ export default function Product({
                                                            height={20}/>}
                                             </div>
                                         </div>
-                                        {/*<p>{location.driving_directions}</p>*/}
-                                        {/*<p>{location.province}</p>*/}
                                     </div>
                                     <div>
                                         <div className='flex gap-2 items-center'>
                                             <Image src="/assets/icons/website.png" alt="website icon" width={20}
                                                    height={20}/>
-                                            <a href={company.fc_website_url} target="_blank" rel="noopener noreferrer">
+                                            <a href={company.fc_website_url} target="_blank" rel="noopener noreferrer" className="hover:underline" onClick={(e) => e.stopPropagation()}>
                                                 {company.name}
                                             </a>
                                         </div>
@@ -119,7 +108,6 @@ export default function Product({
                                                    height={20}/>
                                             <p>{company.phone}</p>
                                         </div>
-                                        {/*<p>{company.fee}</p>*/}
                                     </div>
                                     <div className='flex flex-col'>
                                         <div>
@@ -136,8 +124,6 @@ export default function Product({
                                             <p>{dedicated_trip_caregiver_user.first_name} <span
                                                 className='font-semibold'>{dedicated_trip_caregiver_user.last_name}</span>
                                             </p>
-                                            {/*<p>{dedicated_trip_caregiver_user.first_name}</p>*/}
-                                            {/*<p>{dedicated_trip_caregiver_user.last_name}</p>*/}
                                         </div>
                                         <div className='flex gap-2'>
                                             <Image src="/assets/icons/age.png" alt="age icon" width={0} height={0}
