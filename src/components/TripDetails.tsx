@@ -38,8 +38,6 @@ export default function TripDetails({
                                         accommodation, insurance_type
                                     }: ProductInterface) {
 
-    console.log('loc ', location)
-    console.log('acc ', accommodation)
 
     const remap = {
         own: "Na własną rękę",

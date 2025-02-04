@@ -19,7 +19,6 @@ export default function LocationSection({location, country_name, transport_type,
         wlasny: "Własny"
     };
 
-    console.log("tt ", transport_type)
     return (
         <div className='w-full'>
             <h3 className="font-semibold">Lokalizacja:</h3>

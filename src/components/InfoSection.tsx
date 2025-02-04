@@ -3,7 +3,7 @@ import {InfoSectionInterface} from "@/utils/typesAndInterfaces";
 export default function InfoSection({ title, content, flag, additionalContent, foodDiets }:InfoSectionInterface) {
     const hasContent = !!content?.trim();
     const hasAdditional = !!additionalContent?.trim();
-console.log(additionalContent)
+
     const remap = {
         own: "Na własną rękę",
         no_eggs: "🥚 Bez jajek",
