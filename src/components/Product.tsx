@@ -133,10 +133,10 @@ export default function Product({
                                     </div>
 
                                 </div>
-                                <div className='flex items-center gap-2 pt-4'>
+                                {min_price && <div className='flex items-center gap-2 pt-4'>
                                     <Image src="/assets/icons/price.png" alt="price icon" width={20} height={20}/>
-                                    <p className='text-2xl font-semibold text-blue-900'>Od {min_price ? min_price : "❓"} {currency}</p>
-                                </div>
+                                    <p className='text-2xl font-semibold text-blue-900'>Od {min_price} {currency}</p>
+                                </div>}
                             </div>
                         </div>
                     </div>

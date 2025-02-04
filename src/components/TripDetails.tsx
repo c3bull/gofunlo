@@ -165,7 +165,7 @@ export default function TripDetails({
 
                                         <div>
                                             <h3 className="font-semibold">Transport:</h3>
-                                            {transport_type ? (
+                                            {transport_type && transport_type.trim() ? (
                                                 <div>
                                                     <p>{remap[transport_type as keyof typeof remap]}</p>
                                                 </div>) : (
